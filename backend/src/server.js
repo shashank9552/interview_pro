@@ -16,7 +16,11 @@ app.use(cors({origin:ENV.CLIENT_URL,credentials:true}));
 
 // console.log(ENV.PORT);
 // console.log(ENV.DB_URL);
-app.use("/api/inngest", serve({client:inngest, functions}))
+app.use("/api/inngest", serve({ client: inngest, functions }));
+
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
 
 app.get("/health", (req, res) => {
   res.status(200).json({ msg: "api is up and running successfully" });
